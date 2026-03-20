@@ -8,13 +8,14 @@
 <style>
     body {
         margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        font-family: 'Georgia', serif;
+        background: linear-gradient(to right, #fff5e6, #ffe0b2);
         text-align: center;
-        color: #333;
+        color: #5a0f1c;
     }
-.bg-image {
-        background: url('https://images.unsplash.com/photo-1529636798458-92182e662485') no-repeat center center/cover;
+
+    .bg-image {
+        background: url('https://images.unsplash.com/photo-1519741497674-611481863552') no-repeat center center/cover;
     }
 
     .container {
@@ -22,22 +23,35 @@
     }
 
     h1 {
-        font-size: 40px;
+        font-size: 44px;
+        color: #8b0000;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        color: #b8860b;
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 18px;
     }
 
     button {
-        padding: 15px 25px;
+        padding: 15px 30px;
         font-size: 18px;
         border: none;
-        border-radius: 25px;
-        background-color: #ff6f61;
-        color: white;
+        border-radius: 30px;
+        background: linear-gradient(to right, #8b0000, #b22222);
+        color: #fff;
         cursor: pointer;
         transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     button:hover {
-        background-color: #ff3b2e;
+        background: linear-gradient(to right, #b22222, #8b0000);
+        transform: scale(1.05);
     }
 
     .details {
@@ -46,6 +60,13 @@
         transform: translateY(20px);
         transition: all 1s ease;
         pointer-events: none;
+        background: rgba(139, 0, 0, 0.85);
+        color: #fff8dc;
+        padding: 25px;
+        border-radius: 20px;
+        display: inline-block;
+        border: 3px solid gold;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
 
     .show {
@@ -59,27 +80,23 @@
 <body>
 
 <div class="container">
-    <h1>You're Invited 💍</h1>
-    <p>Click below to see the invitation</p>
+    <h1>Wedding Invitation 💍</h1>
+    <p>We request your presence on this auspicious occasion</p>
 
-    <button id="inviteBtn" onclick="showDetails()">Open Invitation</button>
+    <button id="inviteBtn" onclick="showDetails()">View Invitation</button>
 
     <div class="details" id="details">
         <h2>NAGA RAJU ❤️ SAI NIROSHA</h2>
         <p><strong>Date:</strong> 29th April 2026</p>
-        <p><strong>Venue:</strong> At Our Home</p>
-        <p>Together with their families, invite you to celebrate their wedding 💍!</p>
+        <p><strong>Venue:</strong> At Our Home, Vill:Chapara,Bendi Street</p>
+        <p>With the blessings of elders, we invite you to join us in celebrating our wedding💍.</p>
     </div>
 </div>
 
 <script>
 function showDetails() {
     document.getElementById("details").classList.add("show");
-
-    // Add background image
     document.body.classList.add("bg-image");
-
-    // Hide button after click
     document.getElementById("inviteBtn").style.display = "none";
 }
 </script>
