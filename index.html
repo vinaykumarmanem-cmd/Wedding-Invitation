@@ -15,6 +15,10 @@ body {
     align-items: center;
     height: 100vh;
 }
+    .bg-image {
+        background: url('https://images.unsplash.com/photo-1529636798458-92182e662485') no-repeat center center/cover;
+    }
+
 
 /* Container */
 .container {
@@ -133,11 +137,23 @@ button {
     </div>
 </div>
 
-<script>
+/*<script>
 function openEnvelope() {
     document.getElementById("envelope").classList.add("open");
 }
+</script>*/
+    <script>
+function showDetails() {
+    document.getElementById("details").classList.add("show");
+
+    // Add background image
+    document.body.classList.add("bg-image");
+
+    // Hide button after click
+    document.getElementById("inviteBtn").style.display = "none";
+}
 </script>
+
 
 </body>
 </html>
