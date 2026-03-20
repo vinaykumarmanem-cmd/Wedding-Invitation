@@ -6,98 +6,147 @@
 <title>Wedding Invitation</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Georgia', serif;
-        background: linear-gradient(to right, #fff5e6, #ffe0b2);
-        text-align: center;
-        color: #5a0f1c;
-    }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    text-align: center;
+    background: linear-gradient(to right, #fff8f0, #fdebd0);
+    transition: background 1s ease;
+}
 
-    .bg-image {
-        background: url('https://images.unsplash.com/photo-1519741497674-611481863552') no-repeat center center/cover;
-    }
+/* Background after click */
+.bg-image {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') no-repeat center/cover;
+}
 
-    .container {
-        margin-top: 100px;
-    }
+/* Container */
+.container {
+    margin-top: 80px;
+    perspective: 1200px;
+}
 
-    h1 {
-        font-size: 44px;
-        color: #8b0000;
-        letter-spacing: 2px;
-    }
+/* Button */
+button {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(to right, #800020, #b03a2e);
+    color: #fff;
+    cursor: pointer;
+}
 
-    h2 {
-        color: #b8860b;
-        font-size: 28px;
-    }
+/* Card */
+.card {
+    width: 320px;
+    height: 420px;
+    margin: 40px auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.2s;
+}
 
-    p {
-        font-size: 18px;
-    }
+.open {
+    transform: rotateY(180deg);
+}
 
-    button {
-        padding: 15px 30px;
-        font-size: 18px;
-        border: none;
-        border-radius: 30px;
-        background: linear-gradient(to right, #8b0000, #b22222);
-        color: #fff;
-        cursor: pointer;
-        transition: 0.3s;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+/* Glassmorphism */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+}
 
-    button:hover {
-        background: linear-gradient(to right, #b22222, #8b0000);
-        transform: scale(1.05);
-    }
+/* Front */
+.front {
+    font-size: 22px;
+    font-weight: bold;
+}
 
-    .details {
-        margin-top: 30px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 1s ease;
-        pointer-events: none;
-        background: rgba(139, 0, 0, 0.85);
-        color: #fff8dc;
-        padding: 25px;
-        border-radius: 20px;
-        display: inline-block;
-        border: 3px solid gold;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
+/* Back */
+.back {
+    transform: rotateY(180deg);
+    padding: 20px;
+}
 
-    .show {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+.back h2 {
+    color: gold;
+    margin-bottom: 10px;
+}
+
+/* Petals */
+.petal {
+    position: fixed;
+    top: -10px;
+    width: 12px;
+    height: 12px;
+    background: pink;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
     }
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <h1>Wedding Invitation 💍</h1>
-    <p>We request your presence on this auspicious occasion</p>
+    <h1>Wedding Invitation</h1>
+    <p>Tap below to open</p>
 
-    <button id="inviteBtn" onclick="showDetails()">View Invitation</button>
+    <button onclick="openCard()">Open Invitation</button>
 
-    <div class="details" id="details">
-        <h2>NAGA RAJU ❤️ SAI NIROSHA</h2>
-        <p><strong>Date:</strong> 29th April 2026</p>
-        <p><strong>Venue:</strong> At Our Home, Vill:Chapara,Bendi Street</p>
-        <p>With the blessings of elders, we invite you to join us in celebrating our wedding💍.</p>
+    <div class="card" id="card">
+        <div class="card-face front">
+            💌 Tap to Open
+        </div>
+
+        <div class="card-face back">
+            <h2>Naga Raju ❤️ Sai Nirosha</h2>
+            <p><strong>Date:</strong> 29 April 2026</p>
+            <p><strong>Venue:</strong><br>Residence, Chapara Village, Bendi Street</p>
+            <p>Your presence will be a cherished blessing as we begin this new journey together.</p>
+        </div>
     </div>
 </div>
 
 <script>
-function showDetails() {
-    document.getElementById("details").classList.add("show");
+function openCard() {
+    document.getElementById("card").classList.add("open");
     document.body.classList.add("bg-image");
-    document.getElementById("inviteBtn").style.display = "none";
+    createPetals();
+}
+
+/* Falling petals */
+function createPetals() {
+    for (let i = 0; i < 25; i++) {
+        let petal = document.createElement("div");
+        petal.classList.add("petal");
+
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+        document.body.appendChild(petal);
+    }
 }
 </script>
 
