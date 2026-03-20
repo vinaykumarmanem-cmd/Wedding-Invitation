@@ -6,75 +6,136 @@
 <title>Wedding Invitation</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(to right, #ffecd2, #fcb69f);
-        text-align: center;
-        color: #333;
-    }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .container {
-        margin-top: 100px;
-    }
+/* Container */
+.container {
+    text-align: center;
+}
 
-    h1 {
-        font-size: 40px;
-    }
+/* Button */
+button {
+    padding: 14px 25px;
+    font-size: 18px;
+    border: none;
+    background: #e91e63;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+}
 
-    button {
-        padding: 15px 25px;
-        font-size: 18px;
-        border: none;
-        border-radius: 25px;
-        background-color: #ff6f61;
-        color: white;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+/* Envelope */
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 200px;
+    margin-top: 20px;
+}
 
-    button:hover {
-        background-color: #ff3b2e;
-    }
+/* Body */
+.envelope .body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f48fb1;
+    border-radius: 10px;
+}
 
-    .details {
-        margin-top: 30px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 1s ease;
-        pointer-events: none;
-    }
+/* Flap */
+.envelope .flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ec407a;
+    clip-path: polygon(0 0, 50% 60%, 100% 0);
+    transform-origin: top;
+    transition: transform 1s ease;
+    border-radius: 10px;
+}
 
-    .show {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+/* Card inside */
+.card {
+    position: absolute;
+    width: 90%;
+    height: 160px;
+    background: white;
+    left: 5%;
+    top: 20px;
+    border-radius: 15px;
+    text-align: center;
+    padding: 15px;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+/* Open state */
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .card {
+    transform: translateY(-60px);
+    opacity: 1;
+}
+
+/* Text */
+.names {
+    font-size: 22px;
+    color: #e91e63;
+    font-weight: bold;
+}
+
+.date {
+    margin-top: 10px;
+    color: #444;
+}
+
+.message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Mobile */
+@media (max-width: 400px) {
+    .envelope {
+        width: 90%;
     }
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <h1>You're Invited 💍</h1>
-    <p>Click below to see the invitation</p>
+    <button onclick="openEnvelope()">Open Invitation 💌</button>
 
-    <button id="inviteBtn" onclick="showDetails()">Open Invitation</button>
+    <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="body"></div>
 
-    <div class="details" id="details">
-        <h2>NAGA RAJU ❤️ SAI NIROSHA</h2>
-        <p><strong>Date:</strong> 29th April 2026</p>
-        <p><strong>Venue:</strong> At Our Home</p>
-        <p>We would love your presence on our special day!</p>
+        <div class="card">
+            <div class="names">Naga Raju ❤️ Sai Nirosha</div>
+            <div class="date">📅 29th April 2026</div>
+            <div class="message">
+                Together with their families, invite you to celebrate their wedding 💍
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-function showDetails() {
-    document.getElementById("details").classList.add("show");
-
-    // Hide button after click
-    document.getElementById("inviteBtn").style.display = "none";
+function openEnvelope() {
+    document.getElementById("envelope").classList.add("open");
 }
 </script>
 
