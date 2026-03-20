@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Wedding Invitation</title>
 
 <style>
@@ -41,7 +42,7 @@ button {
 /* Card */
 .card {
     width: 320px;
-    height: 420px;
+    height: 440px;
     margin: 40px auto;
     position: relative;
     transform-style: preserve-3d;
@@ -82,9 +83,55 @@ button {
     padding: 20px;
 }
 
+/* Photos */
+.photos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.person {
+    text-align: center;
+}
+
+.person img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid gold;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.person p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Heart */
+.heart {
+    font-size: 22px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Text */
 .back h2 {
     color: gold;
     margin-bottom: 10px;
+}
+
+.msg {
+    margin-top: 10px;
+    font-size: 14px;
+    font-style: italic;
 }
 
 /* Petals */
@@ -116,16 +163,40 @@ button {
     <button onclick="openCard()">Open Invitation</button>
 
     <div class="card" id="card">
+
+        <!-- FRONT -->
         <div class="card-face front">
             💌 Tap to Open
         </div>
 
+        <!-- BACK WITH PHOTOS -->
         <div class="card-face back">
-            <h2>Naga Raju ❤️ Sai Nirosha</h2>
+
+            <div class="photos">
+                <div class="person">
+                    <img src="BRIDE_PHOTO_URL" alt="Bride">
+                    <p>Sai Nirosha</p>
+                </div>
+
+                <div class="heart">❤️</div>
+
+                <div class="person">
+                    <img src="GROOM_PHOTO_URL" alt="Groom">
+                    <p>Naga Raju</p>
+                </div>
+            </div>
+
+            <h2>Wedding Invitation</h2>
+
             <p><strong>Date:</strong> 29 April 2026</p>
-            <p><strong>Venue:</strong><br>Residence, Chapara Village, Bendi Street</p>
-            <p>Your presence will be a cherished blessing as we begin this new journey together.</p>
+            <p><strong>Venue:</strong><br>At Our Residence, Chapara Village, Bendi Street</p>
+
+            <p class="msg">
+                Your presence will be a cherished blessing as we begin this new journey together✨
+            </p>
+
         </div>
+
     </div>
 </div>
 
@@ -136,7 +207,6 @@ function openCard() {
     createPetals();
 }
 
-/* Falling petals */
 function createPetals() {
     for (let i = 0; i < 25; i++) {
         let petal = document.createElement("div");
