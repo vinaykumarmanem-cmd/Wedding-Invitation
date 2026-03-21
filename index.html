@@ -1,224 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Naga Raju & Sai Nirosha</title>
+    <style>
+        /* Elegant Animated Gradient Background */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(-45deg, #fff5f5, #fef3e2, #fdf5e6, #fffafa);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow: hidden;
+        }
 
-<title>Wedding Invitation</title>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    text-align: center;
-    background: linear-gradient(to right, #fff8f0, #fdebd0);
-    transition: background 1s ease;
-}
+        /* The Card Design */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px 0 30px 0; /* Stylized corners */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 420px;
+            width: 85%;
+            border: 2px solid #d4af37;
+            position: relative;
+        }
 
-/* Background after click */
-.bg-image {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') no-repeat center/cover;
-}
+        /* Decorative Floral Elements */
+        .card::before {
+            content: "❦";
+            font-size: 30px;
+            color: #d4af37;
+            display: block;
+            margin-bottom: 10px;
+        }
 
-/* Container */
-.container {
-    margin-top: 80px;
-    perspective: 1200px;
-}
+        h1 { color: #8b0000; font-size: 1.8rem; margin: 10px 0; }
+        
+        .couple-names {
+            font-size: 2.2rem;
+            color: #8b0000;
+            font-family: 'Times New Roman', serif;
+            margin: 15px 0;
+            font-weight: bold;
+        }
 
-/* Button */
-button {
-    padding: 14px 28px;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    background: linear-gradient(to right, #800020, #b03a2e);
-    color: #fff;
-    cursor: pointer;
-}
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+            border: none;
+        }
 
-/* Card */
-.card {
-    width: 320px;
-    height: 440px;
-    margin: 40px auto;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1.2s;
-}
+        .btn-open {
+            background: #d4af37;
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
 
-.open {
-    transform: rotateY(180deg);
-}
+        .btn-maps {
+            background: #ffffff;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            font-size: 14px;
+            margin-top: 20px;
+        }
 
-/* Glassmorphism */
-.card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: #fff;
-}
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
 
-/* Front */
-.front {
-    font-size: 22px;
-    font-weight: bold;
-}
+        /* Reveal Section */
+        #secret-details {
+            display: none;
+            animation: fadeIn 1.2s ease-in-out;
+        }
 
-/* Back */
-.back {
-    transform: rotateY(180deg);
-    padding: 20px;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* Photos */
-.photos {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.person {
-    text-align: center;
-}
-
-.person img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid gold;
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(255,255,255,0.6);
-}
-
-.person p {
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-/* Heart */
-.heart {
-    font-size: 22px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-/* Text */
-.back h2 {
-    color: gold;
-    margin-bottom: 10px;
-}
-
-.msg {
-    margin-top: 10px;
-    font-size: 14px;
-    font-style: italic;
-}
-
-/* Petals */
-.petal {
-    position: fixed;
-    top: -10px;
-    width: 12px;
-    height: 12px;
-    background: pink;
-    border-radius: 50%;
-    opacity: 0.7;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(360deg);
-    }
-}
-</style>
+        .venue-info {
+            background: #fff9f0;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: #444;
+            font-style: italic;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>Wedding Invitation</h1>
-    <p>Tap below to open</p>
-
-    <button onclick="openCard()">Open Invitation</button>
-
-    <div class="card" id="card">
-
-        <!-- FRONT -->
-        <div class="card-face front">
-            💌 Tap to Open
+    <div class="card">
+        <div id="cover">
+            <h1>You're Invited!</h1>
+            <p>To the wedding celebration of</p>
+            <h2 style="color:#d4af37">Naga Raju & Sai Nirosha</h2>
+            <button class="btn btn-open" onclick="openInvite()">Open Invitation</button>
         </div>
 
-        <!-- BACK WITH PHOTOS -->
-        <div class="card-face back">
-
-            <div class="photos">
-                <div class="person">
-                    <img src="BRIDE_PHOTO_URL" alt="Bride">
-                    <p>Sai Nirosha</p>
-                </div>
-
-                <div class="heart">❤️</div>
-
-                <div class="person">
-                    <img src="GROOM_PHOTO_URL" alt="Groom">
-                    <p>Naga Raju</p>
-                </div>
+        <div id="secret-details">
+            <div class="couple-names">Naga Raju <br>&<br> Sai Nirosha</div>
+            <p><strong>April 29, 2026</strong></p>
+            
+            <div class="venue-info">
+                <strong>Venue:</strong><br>
+                Our Residence, Chapra Village<br>
+                PIN: 532226
             </div>
 
-            <h2>Wedding Invitation</h2>
+            <a href="https://www.google.com/maps/search/?api=1&query=Chapra+Village+532226" 
+               target="_blank" class="btn btn-maps">
+               📍 View on Google Maps
+            </a>
 
-            <p><strong>Date:</strong> 29 April 2026</p>
-            <p><strong>Venue:</strong><br>At Our Residence, Chapara Village, Bendi Street</p>
-
-            <p class="msg">
-                Your presence will be a cherished blessing as we begin this new journey together✨
+            <p style="margin-top:20px; font-size: 14px; color: #8b0000;">
+                We look forward to seeing you there!
             </p>
-
         </div>
-
     </div>
-</div>
 
-<script>
-function openCard() {
-    document.getElementById("card").classList.add("open");
-    document.body.classList.add("bg-image");
-    createPetals();
-}
-
-function createPetals() {
-    for (let i = 0; i < 25; i++) {
-        let petal = document.createElement("div");
-        petal.classList.add("petal");
-
-        petal.style.left = Math.random() * 100 + "vw";
-        petal.style.animationDuration = (3 + Math.random() * 5) + "s";
-
-        document.body.appendChild(petal);
-    }
-}
-</script>
+    <script>
+        function openInvite() {
+            document.getElementById('cover').style.display = 'none';
+            document.getElementById('secret-details').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
