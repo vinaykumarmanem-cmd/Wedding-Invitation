@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -27,7 +28,7 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(135deg, #fff0f5, #ffe4e1); /* changed from white */
     padding: 40px;
     border-radius: 30px 0 30px 0;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -46,7 +47,9 @@ body {
     margin-bottom: 10px;
 }
 
-h1 { color: #8b0000; }
+h1 {
+    color: #8b0000;
+}
 
 .couple-names {
     font-size: 2.2rem;
@@ -84,6 +87,13 @@ h1 { color: #8b0000; }
     color: white;
 }
 
+.btn-maps {
+    background: #8b0000;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
 .music-btn {
     position: absolute;
     top: 10px;
@@ -97,8 +107,8 @@ h1 { color: #8b0000; }
 #secret-details {
     display: none;
 }
-
 </style>
+
 </head>
 
 <body>
@@ -118,34 +128,36 @@ h1 { color: #8b0000; }
 
 <div id="secret-details">
     <div class="couple-photo">
-        <img src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Weeding/main/couple.jpg.jpeg">
+        <img src="https://raw.githubusercontent.com/vinaykumarmanem-cmd/Weeding/main/couple.jpg.jpeg" alt="Couple Photo">
     </div>
 
-    <div class="couple-names">
-        Naga Raju <br>&<br> Sai Nirosha
-    </div>
+```
+<div class="couple-names">
+    Naga Raju <br>&<br> Sai Nirosha
+</div>
+
 <p><strong>April 29, 2026</strong></p>
 
-        <div class="venue-info">
-            <strong>Venue:</strong><br>
-            At Our Residence, Chapara Village<br>
-            PIN: 532216
-        </div>
+<div class="venue-info">
+    <strong>Venue:</strong><br>
+    At Our Residence, Chapara Village<br>
+    PIN: 532216
+</div>
 
-        <a href="https://www.google.com/maps/search/?api=1&query=Chapara+Village+pedda+devara+veedhi+532216" 
-           target="_blank" class="btn btn-maps">
-           📍 View on Google Maps
-        </a>
+<a href="https://www.google.com/maps/search/?api=1&query=Chapara+Village+pedda+devara+veedhi+532216" 
+   target="_blank" class="btn btn-maps">
+   📍 View on Google Maps
+</a>
 
-        <p style="margin-top:20px; font-size: 14px; color: #8b0000;">
-            Your presence will be a cherished blessing as we begin this new journey together ✨
-        </p>
+<p style="margin-top:20px; font-size: 14px; color: #8b0000;">
+    Your presence will be a cherished blessing as we begin this new journey together ✨
+</p>
+```
 
 </div>
 
 </div>
 
-<!-- ✅ FIXED AUDIO -->
 <audio id="bg-music" loop>
     <source src="song.mp3.mpeg" type="audio/mpeg">
 </audio>
@@ -154,8 +166,7 @@ h1 { color: #8b0000; }
 function openInvite() {
     document.getElementById('cover').style.display = 'none';
     document.getElementById('secret-details').style.display = 'block';
-
-   document.getElementById('musicBtn').style.display = 'block';
+    document.getElementById('musicBtn').style.display = 'block';
 
     const music = document.getElementById('bg-music');
     music.play();
